@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <h:body>
+    	<ui:composition template="/template/common/commonLayout.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <h:inputText class="form-control" value="#{usuarioBean.email}" id="email"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <h:inputSecret class="form-control" value="#{usuarioBean.password}" id="password"/>
+                            </div>
+                            <h:commandButton value="Ingresar" class="form-control" action="#{usuarioBean.returnUserLogin}"></h:commandButton>
+                            <div class="alert alert-danger" role="alert">
+                                <h:messages globalOnly="true" />
+                            </div>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                </h:form>
+            </ui:define>
+    	</ui:composition>
+    </h:body>
+</html>

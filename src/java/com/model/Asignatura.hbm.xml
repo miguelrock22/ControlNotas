@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 6, 2017 2:03:14 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.model.Asignatura" table="asignatura" catalog="db_taller" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="foreign">
+                <param name="property">usuarios</param>
+            </generator>
+        </id>
+        <one-to-one name="usuarios" class="com.model.Usuarios" constrained="true"></one-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" />
+        </property>
+        <property name="cod" type="string">
+            <column name="cod" length="45" />
+        </property>
+        <property name="userId" type="java.lang.Integer">
+            <column name="user_id" />
+        </property>
+        <set name="asigEsts" table="asig_est" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_asignatura" not-null="true" />
+            </key>
+            <one-to-many class="com.model.AsigEst" />
+        </set>
+    </class>
+</hibernate-mapping>

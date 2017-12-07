@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="db_taller"/>
+  <table-filter match-name="usuarios"/>
+  <table-filter match-name="roles"/>
+  <table-filter match-name="asignatura"/>
+  <table-filter match-name="asig_est"/>
+</hibernate-reverse-engineering>
