@@ -7,8 +7,8 @@
         <property name="databaseName" value="db_taller"/>
         <property name="User" value="root"/>
         <property name="Password" value=""/>
-        <property name="URL" value="jdbc:mysql://localhost:3306/db_taller?zeroDateTimeBehavior=convertToNull"/>
+        <property name="URL" value="jdbc:mysql://localhost:3306/db_taller"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
     </jdbc-connection-pool>
-    <jdbc-resource enabled="true" jndi-name="java:app/db_talller" object-type="user" pool-name="mysql_db_taller_rootPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/db_taller" object-type="user" pool-name="mysql_db_taller_rootPool"/>
 </resources>
