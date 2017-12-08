@@ -1,5 +1,5 @@
 package com.model;
-// Generated Dec 6, 2017 2:03:14 PM by Hibernate Tools 4.3.1
+// Generated Dec 8, 2017 4:51:21 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -20,8 +20,9 @@ public class Usuarios  implements java.io.Serializable {
      private String direccion;
      private String telefono;
      private String carrera;
+     private Set<Seguimiento> seguimientos = new HashSet<Seguimiento>(0);
      private Set<AsigEst> asigEsts = new HashSet<AsigEst>(0);
-     private Asignatura asignatura;
+     private Set<Asignatura> asignaturas = new HashSet<Asignatura>(0);
 
     public Usuarios() {
     }
@@ -30,7 +31,7 @@ public class Usuarios  implements java.io.Serializable {
     public Usuarios(String email) {
         this.email = email;
     }
-    public Usuarios(Roles roles, String email, String password, String cedula, String nombre, String direccion, String telefono, String carrera, Set<AsigEst> asigEsts, Asignatura asignatura) {
+    public Usuarios(Roles roles, String email, String password, String cedula, String nombre, String direccion, String telefono, String carrera, Set<Seguimiento> seguimientos, Set<AsigEst> asigEsts, Set<Asignatura> asignaturas) {
        this.roles = roles;
        this.email = email;
        this.password = password;
@@ -39,8 +40,9 @@ public class Usuarios  implements java.io.Serializable {
        this.direccion = direccion;
        this.telefono = telefono;
        this.carrera = carrera;
+       this.seguimientos = seguimientos;
        this.asigEsts = asigEsts;
-       this.asignatura = asignatura;
+       this.asignaturas = asignaturas;
     }
    
     public Integer getIdUsuario() {
@@ -106,6 +108,13 @@ public class Usuarios  implements java.io.Serializable {
     public void setCarrera(String carrera) {
         this.carrera = carrera;
     }
+    public Set<Seguimiento> getSeguimientos() {
+        return this.seguimientos;
+    }
+    
+    public void setSeguimientos(Set<Seguimiento> seguimientos) {
+        this.seguimientos = seguimientos;
+    }
     public Set<AsigEst> getAsigEsts() {
         return this.asigEsts;
     }
@@ -113,12 +122,12 @@ public class Usuarios  implements java.io.Serializable {
     public void setAsigEsts(Set<AsigEst> asigEsts) {
         this.asigEsts = asigEsts;
     }
-    public Asignatura getAsignatura() {
-        return this.asignatura;
+    public Set<Asignatura> getAsignaturas() {
+        return this.asignaturas;
     }
     
-    public void setAsignatura(Asignatura asignatura) {
-        this.asignatura = asignatura;
+    public void setAsignaturas(Set<Asignatura> asignaturas) {
+        this.asignaturas = asignaturas;
     }
 
 

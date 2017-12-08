@@ -1,5 +1,5 @@
 package com.model;
-// Generated Dec 6, 2017 2:03:14 PM by Hibernate Tools 4.3.1
+// Generated Dec 8, 2017 4:51:21 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -11,33 +11,29 @@ import java.util.Set;
 public class Asignatura  implements java.io.Serializable {
 
 
-     private int id;
+     private Integer id;
      private Usuarios usuarios;
      private String nombre;
      private String cod;
-     private Integer userId;
      private Set<AsigEst> asigEsts = new HashSet<AsigEst>(0);
+     private Set<Seguimiento> seguimientos = new HashSet<Seguimiento>(0);
 
     public Asignatura() {
     }
 
-	
-    public Asignatura(Usuarios usuarios) {
-        this.usuarios = usuarios;
-    }
-    public Asignatura(Usuarios usuarios, String nombre, String cod, Integer userId, Set<AsigEst> asigEsts) {
+    public Asignatura(Usuarios usuarios, String nombre, String cod, Set<AsigEst> asigEsts, Set<Seguimiento> seguimientos) {
        this.usuarios = usuarios;
        this.nombre = nombre;
        this.cod = cod;
-       this.userId = userId;
        this.asigEsts = asigEsts;
+       this.seguimientos = seguimientos;
     }
    
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
     
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public Usuarios getUsuarios() {
@@ -61,19 +57,19 @@ public class Asignatura  implements java.io.Serializable {
     public void setCod(String cod) {
         this.cod = cod;
     }
-    public Integer getUserId() {
-        return this.userId;
-    }
-    
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
     public Set<AsigEst> getAsigEsts() {
         return this.asigEsts;
     }
     
     public void setAsigEsts(Set<AsigEst> asigEsts) {
         this.asigEsts = asigEsts;
+    }
+    public Set<Seguimiento> getSeguimientos() {
+        return this.seguimientos;
+    }
+    
+    public void setSeguimientos(Set<Seguimiento> seguimientos) {
+        this.seguimientos = seguimientos;
     }
 
 

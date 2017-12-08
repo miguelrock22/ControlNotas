@@ -29,4 +29,23 @@ public class UserAsigDao {
         }
         return estudents;
     }
+    
+    public AsigEst getAsigEstById(int id){
+        AsigEst notes = null; 
+        Transaction trns = null;
+        session = NewHibernateUtil.getSessionFactory().openSession();
+        try{
+            trns = session.beginTransaction();
+            String queryString = "FROM AsigEst WHERE id = :id";
+            Query query = session.createQuery(queryString);
+            query.setInteger("id", id);
+            notes = (AsigEst)query.uniqueResult();
+        }catch(RuntimeException e){
+            e.printStackTrace();
+        }finally{
+            session.flush();
+            session.close();
+        }
+        return notes;
+    }
 }

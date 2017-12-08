@@ -13,5 +13,6 @@
     <mapping resource="com/model/AsigEst.hbm.xml"/>
     <mapping resource="com/model/Asignatura.hbm.xml"/>
     <mapping resource="com/model/Roles.hbm.xml"/>
+    <mapping resource="com/model/Seguimiento.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

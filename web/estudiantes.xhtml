@@ -41,11 +41,15 @@
                             <th scope="row">#{v.usuarios.cedula}</th>
                             <td>#{v.usuarios.nombre}</td>
                             <td>#{v.usuarios.carrera}</td>
-                            <td><a href="#modal" data-value="#{value.id}">Ingresar Notas</a></td>
+                            <td>
+                                <h:form>
+                                    <h:link value="Ingresar notas" outcome="notas.xhtml?nid=#{v.id}"></h:link>
+                                </h:form>
+                            </td>
                         </tr>
                         </ui:repeat>
                     </tbody>
-                </table>
+                </table> 
             </ui:define>
         </ui:composition>
     </h:body>

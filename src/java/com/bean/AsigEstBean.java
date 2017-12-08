@@ -26,9 +26,25 @@ public class AsigEstBean implements Serializable {
     public AsigEstBean() {
     }
     
+    /**
+     * Get asignaturas by user id
+     * @param id asignatura id
+     * @return List<AsigEst> 
+     */
     public List<AsigEst> returnAsigUser(int id){
         UserAsigDao asigDao = new UserAsigDao();
         List<AsigEst> asig = asigDao.getEstByAsig(id);
+        return asig;
+    }
+    
+    /**
+     * Get asig_user row by his id
+     * @param id asigEst id
+     * @return AsigEst 
+     */
+    public AsigEst returnAsigUserById(int id){
+        UserAsigDao asigDao = new UserAsigDao();
+        AsigEst asig = asigDao.getAsigEstById(id);
         return asig;
     }
 

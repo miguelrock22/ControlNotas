@@ -1,30 +1,33 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Dec 6, 2017 2:03:14 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Dec 8, 2017 4:51:22 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.model.Asignatura" table="asignatura" catalog="db_taller" optimistic-lock="version">
-        <id name="id" type="int">
+        <id name="id" type="java.lang.Integer">
             <column name="id" />
-            <generator class="foreign">
-                <param name="property">usuarios</param>
-            </generator>
+            <generator class="identity" />
         </id>
-        <one-to-one name="usuarios" class="com.model.Usuarios" constrained="true"></one-to-one>
+        <many-to-one name="usuarios" class="com.model.Usuarios" fetch="select">
+            <column name="user_id" />
+        </many-to-one>
         <property name="nombre" type="string">
             <column name="nombre" length="45" />
         </property>
         <property name="cod" type="string">
             <column name="cod" length="45" />
         </property>
-        <property name="userId" type="java.lang.Integer">
-            <column name="user_id" />
-        </property>
         <set name="asigEsts" table="asig_est" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="id_asignatura" not-null="true" />
             </key>
             <one-to-many class="com.model.AsigEst" />
+        </set>
+        <set name="seguimientos" table="seguimiento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_asig" />
+            </key>
+            <one-to-many class="com.model.Seguimiento" />
         </set>
     </class>
 </hibernate-mapping>

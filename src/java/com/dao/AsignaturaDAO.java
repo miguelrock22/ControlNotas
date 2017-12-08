@@ -17,7 +17,7 @@ public class AsignaturaDAO {
         session = NewHibernateUtil.getSessionFactory().openSession();
         try{
             trns = session.beginTransaction();
-            String queryString = "FROM Asignatura WHERE userId = :id";
+            String queryString = "FROM Asignatura WHERE usuarios = :id";
             Query query = session.createQuery(queryString);
             query.setInteger("id", id);
             asignaturas = (List<Asignatura>)query.list();
