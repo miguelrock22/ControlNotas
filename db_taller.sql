@@ -34,7 +34,7 @@ CREATE TABLE `asig_est` (
   KEY `asig_id_idx` (`id_asignatura`),
   CONSTRAINT `asig_id` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `usuario_id` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `asig_est` (
 
 LOCK TABLES `asig_est` WRITE;
 /*!40000 ALTER TABLE `asig_est` DISABLE KEYS */;
-INSERT INTO `asig_est` VALUES (1,1,6,0,0,''),(2,1,7,0,0,'');
+INSERT INTO `asig_est` VALUES (1,1,6,3.5,2,''),(2,1,7,0,0,''),(3,3,6,2,3.5,'');
 /*!40000 ALTER TABLE `asig_est` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,7 +62,7 @@ CREATE TABLE `asignatura` (
   PRIMARY KEY (`id`),
   KEY `user_asig_id_idx` (`user_id`),
   CONSTRAINT `user_asig_id` FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,7 +71,7 @@ CREATE TABLE `asignatura` (
 
 LOCK TABLES `asignatura` WRITE;
 /*!40000 ALTER TABLE `asignatura` DISABLE KEYS */;
-INSERT INTO `asignatura` VALUES (1,'Matematicas','CBS1001',2),(2,'Humanidades','CBS00012',3);
+INSERT INTO `asignatura` VALUES (1,'Matematicas','CBS1001',2),(2,'Humanidades','CBS00012',3),(3,'Taller de Programación 1','ING0003',2);
 /*!40000 ALTER TABLE `asignatura` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -97,6 +97,36 @@ LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
 INSERT INTO `roles` VALUES (1,'Profesor'),(2,'Estudiante');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `seguimiento`
+--
+
+DROP TABLE IF EXISTS `seguimiento`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `seguimiento` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_asig` int(11) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `porcentaje` int(11) DEFAULT NULL,
+  `nota` float DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_user_seg_idx` (`id_user`),
+  KEY `id_asig_seg_idx` (`id_asig`),
+  CONSTRAINT `id_asig_seg` FOREIGN KEY (`id_asig`) REFERENCES `asignatura` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_user_seg` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `seguimiento`
+--
+
+LOCK TABLES `seguimiento` WRITE;
+/*!40000 ALTER TABLE `seguimiento` DISABLE KEYS */;
+/*!40000 ALTER TABLE `seguimiento` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -128,7 +158,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (2,'test@test.com','123456',1,'10365','Miguel','test','123456',NULL),(3,'test2@test.com','123456',1,'100023','Profesor 2','test','312231',NULL),(6,'miguelrock222@gmail.com','123456',2,'123456','Miguel Montoya','test','1321654','Ingeniería'),(7,'miguelrock223@gmail.com','123456',2,'12524','Jejejeje','test','12451','Ingeniería');
+INSERT INTO `usuarios` VALUES (2,'test@test.com','123456',1,'10365','Miguel','test','123456',NULL),(3,'test2@test.com','123456',1,'100023','Profesor 2','test','312231',NULL),(6,'miguelrock222@gmail.com','123456',2,'123456','Miguel Montoya','test','1321654','Ingeniería'),(7,'miguelrock223@gmail.com','123456',2,'12524','Prueba usuario 2','test','12451','Ingeniería');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -141,4 +171,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-07 15:48:27
+-- Dump completed on 2017-12-09  1:20:54
