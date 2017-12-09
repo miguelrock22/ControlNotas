@@ -46,6 +46,10 @@ public class AsigEstBean implements Serializable {
         return asig;
     }
     
+    public String formatFloat(float value){
+        return String.format("%.2f", value);
+    }
+    
     /**
      * Get asig_user row by his id
      * @param id asigEst id

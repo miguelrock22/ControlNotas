@@ -30,8 +30,9 @@
                       <tr>
                         <th scope="col">Cod.</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Parcial 1</th>
-                        <th scope="col">Parcial 2</th>
+                        <th scope="col">Parcial 1 25%</th>
+                        <th scope="col">Parcial 2 25%</th>
+                        <th scope="col">Evaluado 50%</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -41,6 +42,7 @@
                             <td>#{value.asignatura.nombre}</td>
                             <td>#{value.parcial1}</td>
                             <td>#{value.parcial2}</td>
+                            <td>#{asigEstBean.formatFloat((value.parcial1 + value.parcial2 )  * .5)}</td>
                         </tr>
                         </ui:repeat>
                     </tbody>
