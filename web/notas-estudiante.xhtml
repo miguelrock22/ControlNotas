@@ -42,7 +42,7 @@
                             <td>#{value.asignatura.nombre}</td>
                             <td>#{value.parcial1}</td>
                             <td>#{value.parcial2}</td>
-                            <td>#{asigEstBean.formatFloat((value.parcial1 + value.parcial2 )  * .5)}</td>
+                            <td>#{asigEstBean.formatFloat(((value.parcial1  + value.parcial2 ) / 2)   * .5)}</td>
                         </tr>
                         </ui:repeat>
                     </tbody>
