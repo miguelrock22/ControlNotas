@@ -7,8 +7,11 @@ import com.model.Usuarios;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 @Named(value = "asigEstBean")
 @ViewScoped
@@ -27,13 +30,19 @@ public class AsigEstBean implements Serializable {
     }
     
     /**
-     * Get asignaturas by user id
+     * Get asignaturas by asig id
      * @param id asignatura id
      * @return List<AsigEst> 
      */
-    public List<AsigEst> returnAsigUser(int id){
+    public List<AsigEst> getEstByAsig(int id){
         UserAsigDao asigDao = new UserAsigDao();
         List<AsigEst> asig = asigDao.getEstByAsig(id);
+        return asig;
+    }
+    
+    public List<AsigEst> returnAsigUser(int id){
+        UserAsigDao asigDao = new UserAsigDao();
+        List<AsigEst> asig = asigDao.getEstByUser(id);
         return asig;
     }
     
@@ -46,6 +55,23 @@ public class AsigEstBean implements Serializable {
         UserAsigDao asigDao = new UserAsigDao();
         AsigEst asig = asigDao.getAsigEstById(id);
         return asig;
+    }
+    
+    public void returnSaveNotas(int nid){
+        String msg ="";
+        ExternalContext context = 
+                FacesContext.getCurrentInstance().getExternalContext();
+        UserAsigDao usernota = new UserAsigDao();
+        AsigEst nota = usernota.getAsigEstById(nid);
+        nota.setParcial1(getParcial1());
+        nota.setParcial2(getParcial2());
+        if(usernota.updateNota(nota)){
+            msg = "Actualizado Correctamente";
+        }else{
+            msg = "Error al actualizar";
+        }
+        FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(msg));
     }
 
     /**

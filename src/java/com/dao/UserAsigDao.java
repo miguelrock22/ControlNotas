@@ -30,6 +30,24 @@ public class UserAsigDao {
         return estudents;
     }
     
+    public List<AsigEst> getEstByUser(int user_id){
+        Transaction trns = null;
+        session = NewHibernateUtil.getSessionFactory().openSession();
+        try{
+            trns = session.beginTransaction();
+            String queryString = "FROM AsigEst WHERE usuarios = :id";
+            Query query = session.createQuery(queryString);
+            query.setInteger("id", user_id);
+            estudents = (List<AsigEst>)query.list();
+        }catch(RuntimeException e){
+            e.printStackTrace();
+        }finally{
+            session.flush();
+            session.close();
+        }
+        return estudents;
+    }
+    
     public AsigEst getAsigEstById(int id){
         AsigEst notes = null; 
         Transaction trns = null;
@@ -47,5 +65,26 @@ public class UserAsigDao {
             session.close();
         }
         return notes;
+    }
+    
+    public boolean updateNota(AsigEst nota) {
+        boolean ret = true;
+        Transaction trns = null;
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        try {
+            trns = session.beginTransaction();
+            session.update(nota);
+            session.getTransaction().commit();
+        } catch (RuntimeException e) {
+            if (trns != null) {
+                trns.rollback();
+            }
+            e.printStackTrace();
+            ret = false;
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return ret;
     }
 }

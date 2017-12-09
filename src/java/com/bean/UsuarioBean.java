@@ -43,12 +43,21 @@ public class UsuarioBean implements Serializable {
             Roles rol = user.getRoles();
             if(rol.getIdRol() == 1){
                 context.redirect("asignaturas.xhtml");
+            }else if(rol.getIdRol() == 2){
+                context.redirect("notas-estudiante.xhtml");
             }
             
         }else{
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage("Datos incorrectos"));
         }
+    }
+    
+    public void returnLogout() throws IOException{
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+        FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage("Se ha cerrado sesión"));
     }
 
     /**

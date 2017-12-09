@@ -11,14 +11,16 @@
         <ui:composition template="/template/common/commonLayout.xhtml">
             <ui:define name="header">
                 <header>
-                    <ul class="nav justify-content-end">
-                        <li class="nav-item">
-                          <a class="nav-link active" href="#">#{usuarioBean.nombre}</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#">Salir</a>
-                        </li>
-                    </ul>
+                    <h:form>
+                        <ul class="nav justify-content-end">
+                            <li class="nav-item">
+                              <a class="nav-link active" href="#">#{usuarioBean.nombre}</a>
+                            </li>
+                            <li class="nav-item">
+                                <h:commandLink class="nav-link active" value="Salir" action="#{usuarioBean.returnLogout()}"></h:commandLink>
+                            </li>
+                        </ul>
+                    </h:form>
                     <h1>
                         #{asignaturaBean.returnAsignaturaById(mat).nombre}
                     </h1>
@@ -36,7 +38,7 @@
                       </tr> 
                     </thead>
                     <tbody>
-                        <ui:repeat value="#{asigEstBean.returnAsigUser(mat)}" var="v">
+                        <ui:repeat value="#{asigEstBean.getEstByAsig(mat)}" var="v">
                         <tr>
                             <th scope="row">#{v.usuarios.cedula}</th>
                             <td>#{v.usuarios.nombre}</td>
