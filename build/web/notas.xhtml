@@ -26,6 +26,8 @@
             </ui:define>
             <ui:define name="content">
                <ui:param name="estudent" value="#{asigEstBean.returnAsigUserById(nid)}"></ui:param>
+               #{asigEstBean.setParcial1(estudent.parcial1)}
+               #{asigEstBean.setParcial2(estudent.parcial2)}
                <h2>#{estudent.asignatura.nombre}</h2>
                <h3>#{estudent.usuarios.nombre} - #{estudent.usuarios.cedula}</h3>
                
@@ -34,14 +36,14 @@
                         <div class="col-md-3"></div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="email">Parcial 1:</label>
-                                <h:inputText class="form-control" value="#{asigEstBean.parcial1}" id="parcial1"/>
+                                <label for="parcial1">Parcial 1:</label>
+                                <h:inputText class="form-control" value="#{asigEstBean.parcial1}" id="parcial1" converter="javax.faces.Float">
+                                </h:inputText>
                             </div>
                             <div class="form-group">
-                                <label for="password">Parcial 2:</label>
+                                <label for="parcial2">Parcial 2:</label>
                                 <h:inputText class="form-control" value="#{asigEstBean.parcial2}" id="parcial2"/>
                             </div>
-                            <h:inputHidden value="nid" id="nid"></h:inputHidden>
                             <h:commandButton value="Guardar" class="form-control" action="#{asigEstBean.returnSaveNotas(nid)}"></h:commandButton>
                             <div class="alert alert-danger" role="alert">
                                 <h:messages globalOnly="true" />
